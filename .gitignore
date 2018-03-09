@@ -1,0 +1,5 @@
+.idea
+Catalog/__pycache__
+Catalog/catalogwithusers.db
+venv36
+Catalog/*.pyc

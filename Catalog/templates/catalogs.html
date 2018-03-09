@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="row top-menu">
+    <div class="col-md-10"></div>
+    <div class="col-md-2 text-right">
+        <a href="{{url_for('disconnect')}}">Logout</a>
+    </div>
+</div>
+
+{% include "header.html" %}
+
+<div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-3">
+        <a href="{{url_for('newCatalog')}}">
+            <h4>Add catalog</h4>
+        </a>
+        <h2>Categories</h2>
+        {% for catalog in catalogs %}
+        <a href="{{url_for('showItems', catalog_name = catalog.name)}}">
+            <h3>{{catalog.name}}</h3>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-7">
+        <a href="{{url_for('newItem')}}">
+            <h4>Add item</h4>
+        </a>
+        <h2>Latest Items</h2>
+        {% for item in items %}
+        <a href="{{url_for('showItem', catalog_name = item.my_catalog.name, item_name = item.name)}}">
+            <h3>{{item.name}} ({{item.my_catalog.name}}) </h3>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-1"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="row top-menu">
+    <div class="col-md-10"></div>
+    <div class="col-md-2 text-right">
+        <a href="{{url_for('disconnect')}}">Logout</a>
+    </div>
+</div>
+{% include "header.html" %}
+<div class="row">
+
+    <div class="col-md-6 col-md-offset-1 padding-top">
+        <h2>Edit Item</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="name">Title:</label>
+                <input type="text" maxlength="50" class="form-control" name="name" value="{{item_name}}">
+
+                <label for="description">Description:</label>
+                <textarea class="form-control" maxlength="250" rows="3" name="description">{{item_description}}</textarea>
+                <label for="category">Category:</label>
+
+                <div class="input-group">
+
+                    <select name="catalog_id">
+                        {% for catalog in catalogs %}
+
+                        <option value="{{catalog.id}}"
+
+                                {% if catalog.id == item_catalog_id %} selected="selected" {% endif %}>{{catalog.name}}</option>
+
+
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-default" id="submit" type="submit">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Submit
+                </button>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
